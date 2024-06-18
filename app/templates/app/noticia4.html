@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticia: Título de la Noticia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/carrete.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a href="{% url 'home' %}" class="navbar-brand"> <span class="text-primary">Caos</span>news</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarS"
+                aria-controls="navbarS" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarS">
+                <ul class="navbar-nav ms-auto mb-2 mb-1g-0">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'servicios' %}" class="nav-link">Nosotros</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="noticia">
+                    <img src="{% static 'imagenes/imagen4.jpg' %}" class="img-fluid" alt="imagen4">
+                    <h2>PDI detalla detención de iraníes en 2023 y descarta presencia de Hezbollah en Chile</h2>
+                    <p>La Policía de Investigaciones (PDI) se refirió la jornada de hoy miércoles a la detención de dos ciudadanos iraníes en abril del año 2023 en el Aeropuerto Internacional de Santiago. Además, descartó la presencia de Hezbollah en territorio nacional. Esto, surge luego de que la ministra de Seguridad de Argentina, Patricia Bullrich, aseguró que existe la presencia del grupo terrorista Hezbollah en Chile. "Se ha visto en el último tiempo presencia en Iquique, en el norte de Chile", apuntó la autoridad trasandina.
+
+                        La Policía de Investigaciones (PDI) se pronunció hoy sobre la detención de dos ciudadanos iraníes en abril de 2023 en el Aeropuerto Internacional de Santiago. Descartó además la presencia de Hezbollah en Chile, en respuesta a declaraciones de la ministra de Seguridad de Argentina, Patricia Bullrich.
+
+                        Según un comunicado de prensa, los ciudadanos fueron detenidos por personal de la PDI por el delito de 'falsificación o uso malicioso de instrumento público' mientras se encontraban en la zona de tránsito del Aeropuerto Internacional Arturo Merino Benítez, como escala desde Panamá, a la espera del vuelo con destino a Inglaterra. Utilizaban pasaportes adulterados declarados como extraviados. Tras su detención, fueron puestos a disposición del tribunal, que determinó prisión preventiva y estableció un plazo investigativo de 120 días.
+                        
+                        Posteriormente, las medidas cautelares fueron modificadas por arresto domiciliario parcial y arraigo nacional. Las diligencias del caso continúan y los imputados no han registrado movimientos migratorios por paso habilitado.
+                        
+                        La PDI afirmó que, hasta la fecha, no ha detectado la presencia en el país de organizaciones como Hezbollah, en respuesta a las afirmaciones de Bullrich. Las autoridades chilenas han respondido a las declaraciones de la ministra argentina, destacando la importancia de la colaboración de inteligencia y policía en estos casos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <a href="{% url 'carrete' %}"> 
+                    <img src="{% static 'imagenes/imagen1.webp' %}" class="img-fluid" alt="imagen1">
+                    <p>Pelea entre Futbolistas</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'noticia2' %}">
+                    <img src="{% static 'imagenes/imagen2.jpg' %}" class="img-fluid" alt="imagen2">
+                    <p>Aumento del dolar</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'noticia3' %}">
+                    <img src="{% static 'imagenes/imagen3.jpg' %}" class="img-fluid" alt="imagen3">
+                    <p>Vacunacion en la moneda</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-dark p-2 text-center">
+        <div class="container">
+            <p class="text-white">noticias de chile y el mundo</p>
+            <p class="text-white">@copyright Derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

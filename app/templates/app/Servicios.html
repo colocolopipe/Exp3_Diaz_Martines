@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+    {% load static %} 
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Caos news - Servicios</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a href="{% url 'home' %}" class="navbar-brand"> <span class="text-primary">Caos</span>news</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarS"
+                aria-controls="navbarS" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarS">
+                <ul class="navbar-nav ms-auto mb-2 mb-1g-0">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'servicios' %}" class="nav-link">Nosotros</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-header text-center text-white pb-5">
+                    <h2>Nuestra Historia</h2>
+                    <p>Descubre cómo comenzó todo</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-8 offset-lg-2">
+                <div class="card text-light text-center bg-dark pb-2">
+                    <div class="card-body text-white">
+                        <h3>Nuestro Origen</h3>
+                        <p class="lead">Un grupo de jóvenes estudiantes de periodismo y comunicación audiovisual se unieron por una visión compartida: desafiar los medios de comunicación tradicionales y ofrecer una nueva perspectiva a través de las noticias. Así nació "Caos News", un colectivo de noticias formado por mentes creativas y apasionadas.</p>
+                        <p class="lead">Cada miembro del equipo aporta su experiencia única, creando una sinergia que impulsa su misión de informar de manera fresca y juvenil. Desde el principio, se han comprometido a cubrir eventos tanto locales como globales, destacando historias que de otra manera podrían pasar desapercibidas.</p>
+                        <p class="lead">Inicialmente, lanzaron un diario digital en formato de blog, pero pronto se dieron cuenta de la necesidad de una plataforma más sofisticada. Una que permitiera un proceso más profesional de reportaje, edición y publicación, mientras ofrecía una experiencia amigable para los usuarios.</p>
+                        <p class="lead">Con el respaldo de la responsable legal del colectivo, el equipo se reunió para discutir sus necesidades y expectativas. Gracias a su destreza con la tecnología y su familiaridad con las redes sociales, sabían exactamente lo que querían: una plataforma que no solo fuera fácil de usar, sino también potente y bien diseñada.</p>
+                        <p class="lead">Así, surgió una lista de deseos detallada, reflejando las aspiraciones del equipo y la comunidad a la que servían. Este proyecto no solo representaba un paso adelante para "Caos News", sino también un compromiso renovado con su audiencia y su dedicación a contar historias que importan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark p-2 text-center">
+        <div class="container">
+            <p class="text-white">Noticias de Chile y el Mundo</p>
+            <p class="text-white">@copyright Derechos reservados</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caos news</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <script src="{% static 'js/clima.js' %}" defer></script> 
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a href="{% url 'home' %}" class="navbar-brand"> <span class="text-primary">Caos</span>news</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarS"
+                aria-controls="navbarS" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarS">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'servicios' %}" class="nav-link">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="nav-link">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="carouselE" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselE" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="slide 1"></button>
+            <button type="button" data-bs-target="#carouselE" data-bs-slide-to="1" aria-label="slide 2"></button>
+            <button type="button" data-bs-target="#carouselE" data-bs-slide-to="2" aria-label="slide 3"></button>
+            <button type="button" data-bs-target="#carouselE" data-bs-slide-to="3" aria-label="slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'imagenes/imagen1.webp' %}" class="d-block w-100">
+                <div class="carousel-caption">
+                    <h5>Dos Futbolistas Chocan y Comienzan una Pelea Durante el Partido</h5>
+                    <p>Pelea que termina muy mal!!!</p>
+                    <a href="{% url 'carrete' %}?imagen=1" class="btn btn-primary mt-3">Más información</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'imagenes/imagen2.jpg' %}" class="d-block w-100">
+                <div class="carousel-caption">
+                    <h5>Aumento del dólar</h5>
+                    <p>Importante alza de valor del dólar</p>
+                    <a href="{% url 'noticia2' %}" class="btn btn-primary mt-3">Más información</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'imagenes/imagen3.jpg' %}" class="d-block w-100">
+                <div class="carousel-caption">
+                    <h5>Vacunaciones en la moneda</h5>
+                    <p>Empiezan las vacunaciones contra la influenza</p>
+                    <a href="{% url 'noticia3' %}" class="btn btn-primary mt-3">Más información</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'imagenes/imagen4.jpg' %}" class="d-block w-100">
+                <div class="carousel-caption">
+                    <h5>La PDI actúa</h5>
+                    <p>PDI captura a criminales</p>
+                    <a href="{% url 'noticia4' %}" class="btn btn-primary mt-3">Más información</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselE" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselE" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <section class="services section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header text-center text-white pb-5">
+                        <h2>Contáctanos</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-4">
+                    <div class="card text-white text-center bg-dark pb-2">
+                        <div class="card-body">
+                            <i class="bi bi-phone"></i>
+                            <h3 class="card-title">¿Tienes noticias que contar?</h3>
+                            <p class="lead">Contáctanos aquí</p>
+                            <button class="btn bg-primary text-white" data-bs-toggle="modal"
+                                data-bs-target="#contactModal">Más información</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="weather-content section-padding">
+        <div class="container">
+            <h1>Buscador del clima</h1>
+            <div class="result">
+                <p>Selecciona región y comuna</p>
+            </div>
+            <form action="" method="POST" class="get-weather">
+                <select name="region" id="region">
+                    <option disabled selected value="">Selecciona la región</option>
+                    <!-- Regiones de Chile -->
+                    <option value="arica">Arica y Parinacota</option>
+                    <option value="tarapaca">Tarapacá</option>
+                    <option value="antofagasta">Antofagasta</option>
+                    <option value="atacama">Atacama</option>
+                    <option value="coquimbo">Coquimbo</option>
+                    <option value="valparaiso">Valparaíso</option>
+                    <option value="ohiggins">O'Higgins</option>
+                    <option value="maule">Maule</option>
+                    <option value="nuble">Ñuble</option>
+                    <option value="biobio">Biobío</option>
+                    <option value="araucania">Araucanía</option>
+                    <option value="rios">Los Ríos</option>
+                    <option value="lagos">Los Lagos</option>
+                    <option value="aysen">Aysén</option>
+                    <option value="magallanes">Magallanes y la Antártica Chilena</option>
+                    <option value="metropolitana">Región Metropolitana</option>
+                </select>
+                <select name="comuna" id="comuna">
+                    <option disabled selected value="">Selecciona la comuna</option>
+                    <!-- Las comunas se llenarán dinámicamente según la región seleccionada -->
+                </select>
+                <input type="submit" value="Obtener Clima">
+            </form>
+        </div>
+    </section>
+
+    <section class="Portafolio section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header text-center text-white pb-5">
+                        <h2>Noticias</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-4">
+                    <div class="card text-light text-center bg-dark pb-2">
+                        <div class="card-body text-white">
+                            <div class="img-area mb-4">
+                                <img src="{% static 'imagenes/imagen9.jpeg' %}" class="img-fluid">
+                            </div>
+                            <h3>Rescate en la Cordillera de los Andes</h3>
+                            <p class="lead">En una emocionante operación de rescate, un grupo de montañistas chilenos fueron salvados luego de quedar atrapados por una tormenta de nieve en la Cordillera de los Andes. El equipo de rescate logró ubicarlos gracias a una señal de emergencia y los evacuó con éxito, evitando una tragedia en una de las zonas más inhóspitas del país.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-4">
+                    <div class="card text-light text-center bg-dark pb-2">
+                        <div class="card-body text-white">
+                            <div class="img-area mb-4">
+                                <img src="{% static 'imagenes/imagen8.jpeg' %}" class="img-fluid">
+                            </div>
+                            <h3>Nueva Ley de Protección Ambiental</h3>
+                            <p class="lead">El gobierno chileno anunció la aprobación de una nueva ley de protección ambiental destinada a preservar los ecosistemas únicos del país. Esta legislación establece medidas más estrictas para la conservación de áreas naturales, regulación de la industria minera y protección de la biodiversidad, reflejando el compromiso de Chile con la sustentabilidad.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-4">
+                    <div class="card text-light text-center bg-dark pb-2">
+                        <div class="card-body text-white">
+                            <div class="img-area mb-4">
+                                <img src="{% static 'imagenes/imagen10.jpeg' %}" class="img-fluid">
+                            </div>
+                            <h3>Lanzamiento de Satélite Espacial Chileno</h3>
+                            <p class="lead">Chile alcanzó un hito histórico en su carrera espacial con el exitoso lanzamiento de su primer satélite de observación terrestre. Este satélite, equipado con tecnología de vanguardia, proporcionará imágenes de alta resolución que serán utilizadas para monitorear recursos naturales, prevenir desastres naturales y contribuir al desarrollo científico del país.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card text-center bg-dark">
+                        <div class="card-body text-white">
+                            <img src="{% static 'imagenes/imagen11.jpeg' %}" class="img-fluid rounded-circle">
+                            <h3 class="card-title py-2">Rafael Cavada</h3>
+                            <p class="card-text"></p>
+                            <p class="socials">
+                                <i class="bi bi-twitter text-white mx-1"></i>
+                                <i class="bi bi-facebook text-white mx-1"></i>
+                                <i class="bi bi-linkedin text-white mx-1"></i>
+                                <i class="bi bi-instagram text-white mx-1"></i>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card text-center bg-dark">
+                        <div class="card-body text-white">
+                            <img src="{% static 'imagenes/imagen12.jpeg' %}" class="img-fluid rounded-circle">
+                            <h3 class="card-title py-2">Felipe Diaz</h3>
+                            <p class="card-text"></p>
+                            <p class="socials">
+                                <i class="bi bi-twitter text-white mx-1"></i>
+                                <i class="bi bi-facebook text-white mx-1"></i>
+                                <i class="bi bi-linkedin text-white mx-1"></i>
+                                <i class="bi bi-instagram text-white mx-1"></i>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card text-center bg-dark">
+                        <div class="card-body text-white">
+                            <img src="{% static 'imagenes/imagen13.jpeg' %}" class="img-fluid rounded-circle">
+                            <h3 class="card-title py-2">Camila Toloza</h3>
+                            <p class="socials">
+                                <i class="bi bi-twitter text-white mx-1"></i>
+                                <i class="bi bi-facebook text-white mx-1"></i>
+                                <i class="bi bi-linkedin text-white mx-1"></i>
+                                <i class="bi bi-instagram text-white mx-1"></i>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Contacto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" class="bg-dark p-4">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Nombre">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Correo">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" placeholder="Mensaje" rows="5"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <input type="file" class="form-control" id="customFile">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark p-2 text-center">
+        <div class="container">
+            <p class="text-white">Noticias de Chile y el Mundo</p>
+            <p class="text-white">@copyright Derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

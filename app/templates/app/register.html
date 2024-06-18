@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+</head>
+<body>
+    <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+        <img src="{% static 'imagenes/usuario.png' %}" alt="user-img">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" name="username" placeholder="Ingresar nombre de usuario" required>
+        <label for="password1">Contraseña</label>
+        <input type="password" id="password1" name="password1" placeholder="Ingresar la Contraseña" required>
+        <label for="password2">Confirmar Contraseña</label>
+        <input type="password" id="password2" name="password2" placeholder="Confirmar la Contraseña" required>
+        <button type="submit" id="submit">Registrarse</button>
+        <a href="{% url 'login' %}" class="button-like">Volver al Inicio de Sesión</a>
+    </form>
+    <script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>
