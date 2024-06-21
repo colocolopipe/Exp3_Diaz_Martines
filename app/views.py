@@ -57,3 +57,6 @@ def carrete(request):
 
 def servicios(request):
     return render(request, 'app/servicios.html')
+
+def revistas(request):
+    return render(request, 'app/revistas.html')
