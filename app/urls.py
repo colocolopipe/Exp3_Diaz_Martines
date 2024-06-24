@@ -11,5 +11,6 @@ urlpatterns = [
     path('carrete/', views.carrete, name='carrete'),
     path('servicios/', views.servicios, name='servicios'),
     path('admin_view/', views.admin_view, name='admin_view'),
-    path('revistas/', views.revistas, name='revistas')
+    path('revistas/', views.revistas, name='revistas'),
+    path('revista', views.revista, name='revista')
 ]

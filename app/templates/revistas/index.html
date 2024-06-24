@@ -1,4 +1,4 @@
-{% extends "paginas/base.html" %}
+{% extends "app/base.html" %}
 
 {% block titulo %} Lista de Revistas    {% endblock %}
 
@@ -16,16 +16,20 @@
             >
                 <thead>
                     <tr>
-                        <th scope="col">Column 1</th>
-                        <th scope="col">Column 2</th>
-                        <th scope="col">Column 3</th>
+                        <th>ID</th>
+                        <th>Titulo</th>
+                        <th>Imagen</th>
+                        <th>Descripcion</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="">
-                        <td scope="row">R1C1</td>
-                        <td>R1C2</td>
-                        <td>R1C3</td>
+                    <tr>
+                        <td>1</td>
+                        <td>revistas de animales</td>
+                        <td>imagen.jpg</td>
+                        <td>revistas que hablan sobre animales que viven en el continente africano</td>
+                        <td> Editar | Borrar </td>
                     </tr>
                     <tr class="">
                         <td scope="row">Item</td>

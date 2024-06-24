@@ -60,3 +60,6 @@ def servicios(request):
 
 def revistas(request):
     return render(request, 'app/revistas.html')
+
+def revista(request):
+    return render(request, 'revistas/index.html')
