@@ -61,5 +61,9 @@ def servicios(request):
 def revistas(request):
     return render(request, 'app/revistas.html')
 
+#seccion de revistas
 def revista(request):
     return render(request, 'revistas/index.html')
+
+def crear(request):
+    return render(request, 'revistas/crear.html')
