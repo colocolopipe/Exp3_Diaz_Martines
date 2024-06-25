@@ -4,6 +4,18 @@
 
 {% block contenido %}
 
-formulario para editar revista o suscripcion
+<div class="card">
+    <div class="card-header">Editar informacion de la revista o suscripcion</div>
+    <div class="card-body">
+        <h4 class="card-title">Datos de la suscripcion o revista</h4>
+    <!--en esta parte incluiremos el formulario-->    
+        {% include 'revistas/form.html'%}
+        
+    </div>
+
+    <div class="card-footer text-muted">
+
+    </div>
+</div>
 
 {% endblock %}

@@ -67,3 +67,6 @@ def revista(request):
 
 def crear(request):
     return render(request, 'revistas/crear.html')
+
+def editar(request):
+    return render(request, 'revistas/editar.html')

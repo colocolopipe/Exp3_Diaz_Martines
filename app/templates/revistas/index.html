@@ -2,7 +2,7 @@
 
 {% block titulo %} Lista de Revistas    {% endblock %}
 
-{% block contenido %}
+{%block contenido %}
 
 <div class="card">
     <div class="card-header">
@@ -39,12 +39,13 @@
                         <td>revistas de animales</td>
                         <td>imagen.jpg</td>
                         <td>revistas que hablan sobre animales que viven en el continente africano</td>
-                        <td> Editar | Borrar </td>
-                    </tr>
-                    <tr class="">
-                        <td scope="row">Item</td>
-                        <td>Item</td>
-                        <td>Item</td>
+                        <!--se esta creando un boton para editar-->
+                        <td>
+                        <a name="" id="" class="btn btn-info" href="{% url 'editar' %}" role="button">Editar</a>
+                        <!--se esta creando un boton para borrar-->
+                        |  
+                        <a name="" id="" class="btn btn-danger" href="#" role="button">Borrar</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
