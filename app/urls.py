@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
 
+from django.conf import settings
+from django.contrib.staticfiles.urls import static
+
 urlpatterns = [
     path('', views.home, name='home'),
     path('login/', views.login_view, name='login'),
@@ -14,5 +17,6 @@ urlpatterns = [
     path('revistas/', views.revistas, name='revistas'),
     path('revista', views.revista, name='revista'),
     path('revista/crear', views.crear, name='crear'),
-    path('revista/editar', views.editar, name='editar')
-]
+    path('revista/editar', views.editar, name='editar'),
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

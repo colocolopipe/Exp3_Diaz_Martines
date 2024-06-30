@@ -3,6 +3,8 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+#se importa el modelo de la tabla suscripciones
+from .models import Suscripciones
 
 def admin_view(request):
     return render(request, 'admin_view.html')  
@@ -63,7 +65,9 @@ def revistas(request):
 
 #seccion de revistas
 def revista(request):
-    return render(request, 'revistas/index.html')
+    suscripcion = Suscripciones.objects.all()
+    print(suscripcion)
+    return render(request, 'revistas/index.html', {'suscripciones': suscripcion})
 
 def crear(request):
     return render(request, 'revistas/crear.html')
