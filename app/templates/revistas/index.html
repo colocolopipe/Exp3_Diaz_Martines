@@ -29,8 +29,10 @@
                         <th>ID</th>
                         <th>Titulo</th>
                         <th>Imagen</th>
+                        <th>Precio</th>
                         <th>Descripcion</th>
                         <th>Acciones</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -40,12 +42,15 @@
                         <td>{{ suscripcion.titulo }}</td>
                         <td>
                         <img src="{{ suscripcion.imagen.url }}" height="100">
+                        
 
                             
                         
                         
                         </td>
+                        <td>${{  suscripcion.precio }}</td>
                         <td>{{ suscripcion.descripcion }}</td>
+                        
                         <!--se esta creando un boton para editar-->
                         <td>
                         <a name="" id="" class="btn btn-info" href="{% url 'editar' suscripcion.id %}" role="button">Editar</a>

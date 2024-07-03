@@ -11,7 +11,8 @@ def admin_view(request):
     return render(request, 'admin_view.html')  
 
 def home(request):
-    return render(request, 'app/index.html')
+    suscripcion = Suscripciones.objects.all()
+    return render(request, 'app/index.html',{'suscripciones': suscripcion})
 
 def login_view(request):
     if request.method == 'POST':

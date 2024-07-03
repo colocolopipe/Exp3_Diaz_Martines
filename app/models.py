@@ -33,6 +33,7 @@ class Suscripciones(models.Model):
     id= models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=100, verbose_name="Titulo")
     imagen = models.ImageField(upload_to='imagenes/',verbose_name="Imagen",null=True)
+    precio = models.IntegerField(null=True)
     descripcion = models.TextField(verbose_name="descripcion",null=True)
 
     def __str__(self):

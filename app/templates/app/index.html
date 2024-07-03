@@ -154,6 +154,37 @@
             </form>
         </div>
     </section>
+    <!--seccion dedicada a las suscripciones-->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header text-center text-white pb-5">
+                        <h2>Suscripciones</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row flex-row flex-nowrap overflow-auto">
+                    {% for suscripcion in suscripciones %}
+                        <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch">
+                            <div class="card text-light text-center bg-dark pb-2">
+                                <div class="card-body text-white">
+                                    <div class="img-area mb-4">
+                                        <img src="{{ suscripcion.imagen.url }}" class="img-fluid" alt="{{ suscripcion.titulo }}">
+                                    </div>
+                                    <h3>{{ suscripcion.titulo }}</h3>
+                                    <p class="lead">{{ suscripcion.descripcion }}</p>
+                                    <h3> ${{ suscripcion.precio}} <br><h6>suscripcion valida Durante 2 semanas</h6></h3>
+                                </div>
+                            </div>
+                            <a name="" id="" class="btn btn-info" href="#" role="button">Comprar</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+    </section>
 
     <section class="Portafolio section-padding">
         <div class="container">
