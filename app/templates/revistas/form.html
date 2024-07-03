@@ -1,18 +1,48 @@
 <!--Este formulario estará diseñado tanto para ingresar información como para modificarla.-->
 
 <form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    {% for campo in formulario %}
+
+
 
     <div class="mb-3">
-        <label for="" class="form-label">Nombre</label>
+        <label for="" class="form-label">{{ campo.label }}</label>
+
+        {% if campo.field.widget.input_type == 'file' and campo.value %}
+        <br/>
+        <img src="{{MEDIA_URL}}/imagenes/{{ campo.value }}" width="100">
+        {% endif %}
+
         <input
-            type="text"
+            type="{{ campo.field.widget.input_type }}"
             class="form-control"
-            name=""
+            name="{{ campo.name }}"
             id=""
             aria-describedby="helpId"
-            placeholder="Nombre"
+            placeholder="{{ campo.label }}"
+            value="{{ campo.value  | default:'' }}"
         />
     </div>
-    
+    <div class="col-12 help-text">{{ campo.error }}</div>
+    {% endfor x%}
 
+    <input
+        name=""
+        id=""
+        class="btn btn-success"
+        type="submit"
+        value="Enviar información"
+    />
+
+    <a
+        name=""
+        id=""
+        class="btn btn-primary"
+        href="{% url 'revista' %}"
+        role="button"
+        >Cancelar</a
+    >
+    
+    
 </form>

@@ -18,5 +18,7 @@ urlpatterns = [
     path('revista', views.revista, name='revista'),
     path('revista/crear', views.crear, name='crear'),
     path('revista/editar', views.editar, name='editar'),
+    path('eliminar/<int:id>', views.eliminar, name='eliminar'),
+    path('revista/editar/<int:id>', views.editar, name='editar'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

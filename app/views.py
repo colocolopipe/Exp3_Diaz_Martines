@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 #se importa el modelo de la tabla suscripciones
 from .models import Suscripciones
+from .forms import SuscripcionesForm
 
 def admin_view(request):
     return render(request, 'admin_view.html')  
@@ -70,7 +71,21 @@ def revista(request):
     return render(request, 'revistas/index.html', {'suscripciones': suscripcion})
 
 def crear(request):
-    return render(request, 'revistas/crear.html')
+    formulario = SuscripcionesForm(request.POST or None, request.FILES or None)
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('revista')
+    return render(request, 'revistas/crear.html',{'formulario': formulario})
 
-def editar(request):
-    return render(request, 'revistas/editar.html')
+def editar(request, id):
+    suscripciones = Suscripciones.objects.get(id=id)
+    formulario = SuscripcionesForm(request.POST or None, request.FILES or None, instance=suscripciones)
+    if formulario.is_valid() and request.POST :
+        formulario.save()
+        return redirect('revista')
+    return render(request, 'revistas/editar.html',{'formulario': formulario})
+
+def eliminar(request,id):
+    suscripciones = Suscripciones.objects.get(id=id)
+    suscripciones.delete() 
+    return redirect('revista')
