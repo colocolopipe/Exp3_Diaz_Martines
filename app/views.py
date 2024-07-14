@@ -6,6 +6,9 @@ from django.http import JsonResponse
 #se importa el modelo de la tabla suscripciones
 from .models import Suscripciones
 from .forms import SuscripcionesForm
+from .forms import PersonaForm
+from django.contrib.auth.hashers import make_password
+from .models import Persona
 
 def admin_view(request):
     return render(request, 'admin_view.html')  
@@ -32,21 +35,6 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, 'app/login.html', {'form': form})
 
-def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('home')
-    else:
-        form = UserCreationForm()
-    return render(request, 'app/register.html', {'form': form})
-
 def noticia2(request):
     return render(request, 'app/noticia2.html')
 
@@ -64,6 +52,14 @@ def servicios(request):
 
 def revistas(request):
     return render(request, 'app/revistas.html')
+
+def register(request):
+    formulario = PersonaForm(request.POST or None, request.FILES or None)
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('home')
+    return render(request, 'app/register.html',{'formulario':formulario})
+
 
 #seccion de revistas
 def revista(request):

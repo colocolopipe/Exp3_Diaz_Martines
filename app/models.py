@@ -44,3 +44,7 @@ class Suscripciones(models.Model):
     def delete(self, using=None, keep_parents=False):
         self.imagen.storage.delete(self.imagen.name)
         super().delete()
+
+class Persona(models.Model):
+    nombre_de_usuario = models.CharField(max_length=150, unique=True)
+    contraseña = models.CharField(max_length=128)
