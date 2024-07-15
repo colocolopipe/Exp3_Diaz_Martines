@@ -31,9 +31,25 @@
                     <li class="nav-item">
                         <a href="{% url 'servicios' %}" class="nav-link">Nosotros</a>
                     </li>
+                    <!--implementacion de inicio de sesion-->
+                    {% if request.user.is_authenticated %}
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                          <p>
+                            Hello {{ request.user.first_name|default:request.user.username }}, 
+                            <a class="" href="{% url 'logout' %}">
+                              <strong> Log out</strong>
+                            </a>
+                          </p>
+                        </div>
+                    </div>   
+
+                    {% endif %}
                     <li class="nav-item">
-                        <a href="{% url 'login' %}" class="nav-link">Iniciar Sesión</a>
+                        <a href="{% url 'logins' %}" class="nav-link">Iniciar Sesión</a>
                     </li>
+
+
                     <li class="nav-item">
                         <a href="{% url 'revista'%}" class="nav-link">Revistas y Suscripciones</a>
                     </li>

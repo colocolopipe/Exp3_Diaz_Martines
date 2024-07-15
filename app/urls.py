@@ -3,6 +3,7 @@ from . import views
 
 from django.conf import settings
 from django.contrib.staticfiles.urls import static
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -20,5 +21,8 @@ urlpatterns = [
     path('revista/editar', views.editar, name='editar'),
     path('eliminar/<int:id>', views.eliminar, name='eliminar'),
     path('revista/editar/<int:id>', views.editar, name='editar'),
+    #path('logins/', views.user_login, name='logins')
+    path('logins/', auth_views.LoginView.as_view(), name='logins'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -90,4 +91,6 @@ MEDIA_URL = '/imagenes/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'logins'
+LOGOUT_URL = 'logout'

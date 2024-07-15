@@ -2,16 +2,39 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 #se importa el modelo de la tabla suscripciones
 from .models import Suscripciones
 from .forms import SuscripcionesForm
 from .forms import PersonaForm
+from .forms import LoginForm
 from django.contrib.auth.hashers import make_password
 from .models import Persona
+from django.contrib.auth.decorators import login_required
 
 def admin_view(request):
-    return render(request, 'admin_view.html')  
+    return render(request, 'admin_view.html')
+
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(request, 
+                                    username = cd['username'],
+                                    password = cd['password']) # None
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponse('Usuario autenticado')
+                else:
+                    return HttpResponse('el usuario no esta activo')
+            else:
+                return HttpResponse('la informacion no es correcta')
+    else:
+        form = LoginForm()
+        return render(request, 'account/login.html', {'form': form})
+      
 
 def home(request):
     suscripcion = Suscripciones.objects.all()
@@ -86,3 +109,6 @@ def eliminar(request,id):
     suscripciones = Suscripciones.objects.get(id=id)
     suscripciones.delete() 
     return redirect('revista')
+
+
+#@login_required
