@@ -4,7 +4,10 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
 from .models import Suscripciones
-from .forms import SuscripcionesForm
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .forms import PersonaForm
 from .forms import LoginForm
 from django.contrib.auth.hashers import make_password
@@ -13,11 +16,18 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .models import CarroItem
 from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Revista, CarroItem
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 from .models import CarroItem, Revista
 from django.shortcuts import render
 from .models import CarroItem
 from django.shortcuts import get_object_or_404, redirect
 from .models import CarroItem, Revista
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Revista, CarroItem
 def admin_view(request):
     return render(request, 'admin_view.html')
 
@@ -113,23 +123,14 @@ def eliminar(request,id):
     suscripciones = Suscripciones.objects.get(id=id)
     suscripciones.delete() 
     return redirect('revista')
+def tienda_y_carro(request):
+    revistas = Suscripciones.objects.all()  # Obtener todas las instancias de Suscripciones
+    carro_items = []  # Aquí deberías obtener los elementos del carro, si aplica
+    total = 0  # Aquí deberías calcular el total del carro, si aplica
 
-
-
-def agregar_al_carro(request, revista_id):
-    revista = get_object_or_404(Revista, pk=revista_id)
-    carro_usuario, creado = CarroItem.objects.get_or_create(
-        revista=revista,
-        usuario=request.user
-    )
-    if not creado:
-        carro_usuario.cantidad += 1
-        carro_usuario.save()
-    return redirect('vista_del_carro') 
-
-
-def vista_del_carro(request):
-    carro_items = CarroItem.objects.filter(usuario=request.user)
-    total = sum(item.revista.precio * item.cantidad for item in carro_items)
-    return render(request, 'app/vista_del_carro.html', {'carro_items': carro_items, 'total': total})
-
+    context = {
+        'revistas': revistas,
+        'carro_items': carro_items,
+        'total': total,
+    }
+    return render(request, 'app/tienda_y_carro.html', context)

@@ -15,7 +15,7 @@ urlpatterns = [
     path('carrete/', views.carrete, name='carrete'),
     path('servicios/', views.servicios, name='servicios'),
     path('admin_view/', views.admin_view, name='admin_view'),
-    path('revistas/', views.revistas, name='revistas'),
+
     path('revista', views.revista, name='revista'),
     path('revista/crear', views.crear, name='crear'),
     path('revista/editar', views.editar, name='editar'),
@@ -24,6 +24,11 @@ urlpatterns = [
     path('agregar_al_carro/', views.agregar_al_carro, name='agregar_al_carro'),
     path('logins/', auth_views.LoginView.as_view(), name='logins'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('carro/', views.vista_del_carro, name='vista_del_carro')
+    path('carro/', views.vista_del_carro, name='vista_del_carro'),
+     path('agregar_al_carro/<int:revista_id>/', views.agregar_al_carro, name='agregar_al_carro'),
+    path('vista_del_carro/', views.vista_del_carro, name='vista_del_carro'),
+    path('tienda_y_carro/', views.tienda_y_carro, name='tienda_y_carro'),
+    path('agregar_al_carro/<int:revista_id>/', views.agregar_al_carro, name='agregar_al_carro'),
+    
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

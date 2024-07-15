@@ -1,0 +1,30 @@
+{% extends "app/base.html" %}
+{% block contenido %}
+<h2>Tienda</h2>
+<ul>
+  {% for revista in revistas %}
+  <li>
+    {{ revista.titulo }} - ${{ revista.precio }} 
+    <form method="post" style="display: inline;">
+      {% csrf_token %}
+      <input type="hidden" name="revista_id" value="{{ revista.id }}">
+      <button type="submit">Agregar al carrito</button>
+    </form>
+  </li>
+  {% empty %}
+  <li>No hay revistas disponibles.</li>
+  {% endfor %}
+</ul>
+
+<h2>Carro de Compras</h2>
+<ul>
+  {% for item in carro_items %}
+  <li>
+    {{ item.cantidad }} x {{ item.revista.titulo }} - ${{ item.revista.precio }} c/u
+  </li>
+  {% empty %}
+  <li>El carro de compras está vacío.</li>
+  {% endfor %}
+</ul>
+<p>Total: ${{ total }}</p>
+{% endblock %}
