@@ -1,9 +1,16 @@
-{% extends "app/base.html"%}
 
-{% block titulo %} Revistas {% endblock %}
-
+{% extends "app/base.html" %}
 {% block contenido %}
-
-Seccion de revistas
-
+<h2>Revistas Disponibles</h2>
+<ul>
+  {% for revista in revistas %}
+  <li>
+    {{ revista.titulo }}
+    <form action="{% url 'agregar_al_carro' revista.id %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Agregar al Carro</button>
+    </form>
+  </li>
+  {% endfor %}
+</ul>
 {% endblock %}

@@ -3,7 +3,6 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
-#se importa el modelo de la tabla suscripciones
 from .models import Suscripciones
 from .forms import SuscripcionesForm
 from .forms import PersonaForm
@@ -11,7 +10,14 @@ from .forms import LoginForm
 from django.contrib.auth.hashers import make_password
 from .models import Persona
 from django.contrib.auth.decorators import login_required
-
+from django.shortcuts import render
+from .models import CarroItem
+from django.shortcuts import get_object_or_404, redirect
+from .models import CarroItem, Revista
+from django.shortcuts import render
+from .models import CarroItem
+from django.shortcuts import get_object_or_404, redirect
+from .models import CarroItem, Revista
 def admin_view(request):
     return render(request, 'admin_view.html')
 
@@ -83,8 +89,6 @@ def register(request):
         return redirect('home')
     return render(request, 'app/register.html',{'formulario':formulario})
 
-
-#seccion de revistas
 def revista(request):
     suscripcion = Suscripciones.objects.all()
     print(suscripcion)
@@ -111,4 +115,21 @@ def eliminar(request,id):
     return redirect('revista')
 
 
-#@login_required
+
+def agregar_al_carro(request, revista_id):
+    revista = get_object_or_404(Revista, pk=revista_id)
+    carro_usuario, creado = CarroItem.objects.get_or_create(
+        revista=revista,
+        usuario=request.user
+    )
+    if not creado:
+        carro_usuario.cantidad += 1
+        carro_usuario.save()
+    return redirect('vista_del_carro') 
+
+
+def vista_del_carro(request):
+    carro_items = CarroItem.objects.filter(usuario=request.user)
+    total = sum(item.revista.precio * item.cantidad for item in carro_items)
+    return render(request, 'app/vista_del_carro.html', {'carro_items': carro_items, 'total': total})
+

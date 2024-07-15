@@ -1,0 +1,23 @@
+
+{% extends "app/base.html" %}
+{% block contenido %}
+<h2>Carro de Compras</h2>
+<ul>
+  {% for item in carro_items %}
+  <li>
+    {{ item.cantidad }} x {{ item.revista.titulo }} - ${{ item.revista.precio }} c/u
+  </li>
+  {% endfor %}
+</ul>
+<p>Total: ${{ total }}</p>
+{% endblock %}
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+from .models import CarroItem
+
+@login_required
+def vista_del_carro(request):
+    usuario_id = request.user.id  # Obtener el ID del usuario autenticado
+    carro_items = CarroItem.objects.filter(usuario_id=usuario_id)
+    total = sum(item.revista.precio * item.cantidad for item in carro_items)
+    return render(request, 'tu_app/vista_del_carro.html', {'carro_items': carro_items, 'total': total})

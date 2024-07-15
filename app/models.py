@@ -40,7 +40,7 @@ class Suscripciones(models.Model):
         fila = "Titulo: " + self.titulo + " - " + "Descripcion: " + self.descripcion
         return fila
     
-    #esta funcion servira para borrar el archivo junto con la imagen del registro
+    
     def delete(self, using=None, keep_parents=False):
         self.imagen.storage.delete(self.imagen.name)
         super().delete()
@@ -48,3 +48,25 @@ class Suscripciones(models.Model):
 class Persona(models.Model):
     nombre_de_usuario = models.CharField(max_length=150, unique=True)
     contraseña = models.CharField(max_length=128)
+
+    # nombre_de_tu_aplicacion/models.py
+
+from django.db import models
+from django.contrib.auth.models import User
+
+class Revista(models.Model):
+    titulo = models.CharField(max_length=200)
+    descripcion = models.TextField()
+    precio = models.DecimalField(max_digits=6, decimal_places=2)
+    disponible = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.titulo
+
+class CarroItem(models.Model):
+    revista = models.ForeignKey(Revista, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f'{self.cantidad} of {self.revista.titulo}'
