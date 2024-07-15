@@ -1,5 +1,5 @@
 from django import forms
-
+from .models import Suscripciones, Persona
 
 class SuscripcionesForm(forms.ModelForm):
     class Meta:

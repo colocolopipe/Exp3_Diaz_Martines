@@ -3,31 +3,15 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
+#se importa el modelo de la tabla suscripciones
 from .models import Suscripciones
-
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
+from .forms import SuscripcionesForm
 from .forms import PersonaForm
 from .forms import LoginForm
 from django.contrib.auth.hashers import make_password
 from .models import Persona
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
-from .models import CarroItem
-from django.shortcuts import get_object_or_404, redirect
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Revista, CarroItem
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
 
-from .models import CarroItem, Revista
-from django.shortcuts import render
-from .models import CarroItem
-from django.shortcuts import get_object_or_404, redirect
-from .models import CarroItem, Revista
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Revista, CarroItem
 def admin_view(request):
     return render(request, 'admin_view.html')
 
@@ -99,6 +83,8 @@ def register(request):
         return redirect('home')
     return render(request, 'app/register.html',{'formulario':formulario})
 
+
+#seccion de revistas
 def revista(request):
     suscripcion = Suscripciones.objects.all()
     print(suscripcion)
@@ -123,14 +109,6 @@ def eliminar(request,id):
     suscripciones = Suscripciones.objects.get(id=id)
     suscripciones.delete() 
     return redirect('revista')
-def tienda_y_carro(request):
-    revistas = Suscripciones.objects.all()  # Obtener todas las instancias de Suscripciones
-    carro_items = []  # Aquí deberías obtener los elementos del carro, si aplica
-    total = 0  # Aquí deberías calcular el total del carro, si aplica
 
-    context = {
-        'revistas': revistas,
-        'carro_items': carro_items,
-        'total': total,
-    }
-    return render(request, 'app/tienda_y_carro.html', context)
+
+#@login_required

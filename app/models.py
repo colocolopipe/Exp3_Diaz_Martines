@@ -1,7 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
-from .models import Suscripciones
-
 
 class Noticia(models.Model):
     titulo = models.CharField(max_length=200)
@@ -31,26 +28,23 @@ class MiembroEquipo(models.Model):
 
     def __str__(self):
         return self.nombre
+    
 class Suscripciones(models.Model):
-    id = models.AutoField(primary_key=True)
+    id= models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=100, verbose_name="Titulo")
-    imagen = models.ImageField(upload_to='imagenes/', verbose_name="Imagen", null=True)
+    imagen = models.ImageField(upload_to='imagenes/',verbose_name="Imagen",null=True)
     precio = models.IntegerField(null=True)
-    descripcion = models.TextField(verbose_name="descripcion", null=True)
+    descripcion = models.TextField(verbose_name="descripcion",null=True)
 
     def __str__(self):
         fila = "Titulo: " + self.titulo + " - " + "Descripcion: " + self.descripcion
         return fila
     
+    #esta funcion servira para borrar el archivo junto con la imagen del registro
     def delete(self, using=None, keep_parents=False):
         self.imagen.storage.delete(self.imagen.name)
         super().delete()
 
-
-class OtraSuscripcion(models.Model):
-    titulo = models.CharField(max_length=100)
-    precio = models.DecimalField(max_digits=6, decimal_places=2)
-   
-
-    def __str__(self):
-        return self.titulo
+class Persona(models.Model):
+    nombre_de_usuario = models.CharField(max_length=150, unique=True)
+    contraseña = models.CharField(max_length=128)

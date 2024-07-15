@@ -31,7 +31,7 @@
                     <li class="nav-item">
                         <a href="{% url 'servicios' %}" class="nav-link">Nosotros</a>
                     </li>
-                    
+                    <!--implementacion de inicio de sesion-->
                     {% if request.user.is_authenticated %}
                     <div class="navbar-end">
                         <div class="navbar-item">
@@ -120,7 +120,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-12 col-lg-4 mb-4">
+                <div class="col-12 col-md-12 col-lg-4">
                     <div class="card text-white text-center bg-dark pb-2">
                         <div class="card-body">
                             <i class="bi bi-phone"></i>
@@ -131,51 +131,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-12 col-lg-4 mb-4">
-                    <div class="card text-white text-center bg-dark pb-2">
-                        <div class="card-body">
-                            <i class="bi bi-journal"></i>
-                            <h3 class="card-title">Comprar revistas</h3>
-                            <p class="lead">Adquiere nuestras últimas ediciones</p>
-                            <a href="{% url 'tienda_y_carro' %}" class="btn bg-primary text-white">Comprar ahora</a>
-                        </div>
-                    </div>
-                </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
-    
-    
-    <div class="modal fade" id="buyModal" tabindex="-1" aria-labelledby="buyModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="buyModalLabel">Comprar Revistas</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="#" class="bg-dark p-4">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Nombre">
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Correo">
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" placeholder="Mensaje" rows="5"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <input type="file" class="form-control" id="customFile">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <section class="weather-content section-padding">
         <div class="container">
@@ -186,7 +144,7 @@
             <form action="" method="POST" class="get-weather">
                 <select name="region" id="region">
                     <option disabled selected value="">Selecciona la región</option>
-
+                    <!-- Regiones de Chile -->
                     <option value="arica">Arica y Parinacota</option>
                     <option value="tarapaca">Tarapacá</option>
                     <option value="antofagasta">Antofagasta</option>
@@ -206,12 +164,13 @@
                 </select>
                 <select name="comuna" id="comuna">
                     <option disabled selected value="">Selecciona la comuna</option>
-                    
+                    <!-- Las comunas se llenarán dinámicamente según la región seleccionada -->
                 </select>
                 <input type="submit" value="Obtener Clima">
             </form>
         </div>
     </section>
+    <!--seccion dedicada a las suscripciones-->
     <section>
         <div class="container">
             <div class="row">
